@@ -1,0 +1,54 @@
+
+Building on Linux or MinGW
+--------------------------
+
+Just run
+
+
+make
+
+
+If you'd like to build a shared library on Linux run
+
+
+make LIBSLAS_SHARED=1
+
+
+Building a shared library (.dll) is not supported on Windows.  If you'd like
+to know why we don't build a shared library on Windows just search the 
+interwebs for __declspec.  There really shouldn't be any reason to build this
+as a shared library.  After all, it's pretty tiny.
+
+
+
+Installing
+----------
+
+Just copy the resulting libslas.a file (or libslas.so if you built it as a
+shared library on Linux) to one of your normal library directories.  On Linux
+that could be /usr/local/lib or /usr/lib where it will be found automatically.
+If you don't put it in /usr/local/lib or /usr/lib you need to add the
+directory where you put it to your LD_LIBRARY_PATH environment variable:
+
+export LD_LIBRARY_PATH=/WHEREVER_YOU_PUT_LIBSLAS:$LD_LIBRARY_PATH
+
+On Windows you need to put it somewhere in your PATH or add the location to
+your PATH environment variable.
+
+
+
+Development
+-----------
+
+If you want to compile other programs that use libslas you will need to add:
+
+-L/WHEREVER_YOU_PUT_LIBSLAS
+
+to the linker options in your Makefile for programs that need to use it.  You
+will also need to copy the libslas.h file to one of the standard include
+directories (like /usr/local/include or /usr/include) or, if you put them
+somewhere else, add:
+
+-I/WHEREVER_YOU_PUT_LIBSLAS_H
+
+to the compiler options in your Makefile for programs that need to use it.

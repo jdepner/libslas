@@ -1,0 +1,105 @@
+
+
+Purpose
+-------
+
+The libslas C library is a very simple LAS I/O library for reading, writing,
+and updating LAS 1.0, 1.1, and 1.2 files.
+
+
+
+Maintainer
+----------
+
+Jan Depner
+Please send bug patches to area.based.editor AT gmail D0T com.
+
+
+
+Portability
+-----------
+
+This library should build and work on any Linux system that has gcc and on 32
+or 64 bit MinGW in Windows.
+
+
+
+Copyright
+---------
+
+The source for the libslas C Library is copyright (c) 2014 Jan Depner.  It is
+released under the LGPL license (v2.1 or later, see the LICENSE file).  Please
+note that the file libslas_pd_functions.h is in the public domain and is NOT
+licensed under the LGPL.
+
+
+
+Usage and limitations
+---------------------
+
+Basically, libslas consists of three structures:
+
+LIBSLAS_HEADER
+LIBSLAS_VLR_HEADER
+LIBSLAS_POINT_DATA
+
+
+and a few functions:
+
+libslas_open_las_file
+libslas_create_las_file
+libslas_close_las_file
+libslas_read_vlr_header
+libslas_read_vlr_data
+libslas_append_vlr_record
+libslas_read_point_data
+libslas_append_point_data
+libslas_update_point_data
+
+libslas_strerror
+libslas_perror
+libslas_get_version
+
+libslas_dump_las_header
+libslas_dump_vlr_header
+libslas_dump_point_data
+
+
+Detailed usage information is available in the libslas.h file.   Alternatively,
+you can run doxygen in this directory to generate HTML documentation.  Doxygen
+will create a directory called LIBSLAS_API_Documentation.  In that directory
+will be another directory called html.  Open the html/index.html file with your
+favorite browser to view the documentation.
+
+
+
+Installation
+------------
+
+Please read the INSTALL file for installation instructions.
+
+
+
+Road map
+--------
+
+- Hopefully, at some point in the future, I will start using setvbuf to buffer
+  sequential reads and writes (point data only) to try to increase I/O
+  speed.
+
+- A little function to convert year, day, hour, minute, seconds decimal to
+  the incredibly convoluted version of GPS time in LAS 1.2 and vice versa.
+  Just a bit of lagniappe as we say down here.
+
+- Possibly LAS 1.3 support although it seems silly to me to try to store
+  waveforms in a transfer format.  People who are interested in waveforms
+  aren't usually just making pretty pictures.  Ideally, if you need waveforms,
+  the vendors format (assuming they are smart enough to make their format open
+  and provide an API) is a better option for transferring waveforms.
+
+- If someone else would like to take a look at Python, Java, etc bindings that
+  would be fine.  I used to do a little Java but I didn't like it much.
+
+- Autoconf setup.
+
+- Translation stuff (not me, I can barely speak Engrish ;-)
